@@ -1,7 +1,7 @@
 import { RESUME_DATA } from "@/data/resume-data";
 
 export function generatePersonStructuredData() {
-  return {
+  const data: any = {
     "@context": "https://schema.org",
     "@type": "Person",
     name: RESUME_DATA.name,
@@ -21,19 +21,15 @@ export function generatePersonStructuredData() {
       contactType: "personal",
     },
     jobTitle: "Full Stack Engineer",
-    worksFor:
-      RESUME_DATA.work.length > 0
-        ? {
-            "@type": "Organization",
-            name: RESUME_DATA.work[0].company,
-            url: RESUME_DATA.work[0].link,
-          }
-        : undefined,
     alumniOf: RESUME_DATA.education.map((edu) => ({
       "@type": "EducationalOrganization",
       name: edu.school,
     })),
-    hasOccupation: RESUME_DATA.work.map((job) => ({
+    knowsAbout: RESUME_DATA.skills,
+  };
+
+  if (Array.isArray(RESUME_DATA.work) && RESUME_DATA.work.length > 0 && RESUME_DATA.work[0]?.company) {
+    data.hasOccupation = RESUME_DATA.work.map((job) => ({
       "@type": "Occupation",
       name: job.title,
       occupationLocation: {
@@ -45,9 +41,16 @@ export function generatePersonStructuredData() {
         "@type": "MonetaryAmountDistribution",
         name: "Professional software engineer",
       },
-    })),
-    knowsAbout: RESUME_DATA.skills,
-  };
+    }));
+
+    data.worksFor = {
+      "@type": "Organization",
+      name: RESUME_DATA.work[0].company,
+      url: RESUME_DATA.work[0].link,
+    };
+  }
+
+  return data;
 }
 
 export function generateWebPageStructuredData() {

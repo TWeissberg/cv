@@ -2,7 +2,7 @@ import type { StaticImageData } from "next/image";
 
 export type ResumeIcon = React.ComponentType<React.SVGProps<SVGSVGElement>> | StaticImageData;
 
-export type IconType = "github" | "linkedin" | "x" | "globe" | "mail" | "phone";
+export type IconType = "github" | "linkedin" | "googleScholar" | "x" | "globe" | "mail" | "phone";
 
 export interface ResumeData {
   name: string;
@@ -46,6 +46,27 @@ export interface ResumeData {
       label: string;
       href: string;
     };
+  }>;
+  publications: Array<{
+    title: string;
+    techStack: string[];
+    description: string;
+    link?: {
+      label: string;
+      href: string;
+    };
+    authors: string[];
+    publisher?: string;
+  }>;
+  achievements: Array<{
+    title: string;
+    techStack: string[];
+    description: string;
+    link?: {
+      label: string;
+      href: string;
+    };
+    date: string;
   }>;
 }
 

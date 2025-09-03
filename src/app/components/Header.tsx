@@ -3,7 +3,7 @@ import Image, { type StaticImageData } from "next/image";
 import React from "react";
 import { Avatar } from "@/components/avatar";
 import { Button } from "@/components/ui/button";
-import { GitHubIcon, LinkedInIcon } from "@/components/icons";
+import { GitHubIcon, LinkedInIcon, GoogleScholarIcon } from "@/components/icons";
 import { XIcon } from "@/components/icons/x-icon";
 import { RESUME_DATA } from "@/data/resume-data";
 import type { ResumeIcon, IconType } from "@/lib/types";
@@ -12,6 +12,7 @@ import type { ResumeIcon, IconType } from "@/lib/types";
 const ICON_MAP: Record<IconType, React.ComponentType<React.SVGProps<SVGSVGElement>>> = {
   github: GitHubIcon,
   linkedin: LinkedInIcon,
+  googleScholar: GoogleScholarIcon,
   x: XIcon,
   globe: GlobeIcon,
   mail: MailIcon,
@@ -177,7 +178,19 @@ export function Header() {
     <header className="flex items-center justify-between">
       <div className="flex-1 space-y-1.5">
         <h1 className="text-2xl font-bold" id="resume-name">
-          {RESUME_DATA.name}
+          {RESUME_DATA.name.split("ß").map((part, idx, arr) => (
+            <React.Fragment key={idx}>
+              {part}
+              {idx < arr.length - 1 && (
+                <span
+                  title='The letter "ß" is called "Eszett" or "sharp S" in German. It is pronounced like "ss".'
+                  className="cursor-help underline decoration-dotted decoration-2"
+                >
+                  ß
+                </span>
+              )}
+            </React.Fragment>
+          ))}
         </h1>
         <p className="max-w-md text-pretty font-mono text-sm text-foreground/80 print:text-[12px]">
           {RESUME_DATA.about}

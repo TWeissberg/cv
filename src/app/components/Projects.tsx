@@ -133,6 +133,10 @@ interface ProjectsProps {
 export function Projects({
   projects,
 }: ProjectsProps) {
+  if (!projects || projects.length === 0) {
+    return null;
+  }
+
   return (
     <Section className="scroll-mb-16 print:space-y-4">
       <h2 className="text-xl font-bold" id="side-projects">
