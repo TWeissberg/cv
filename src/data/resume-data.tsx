@@ -223,6 +223,28 @@ export const RESUME_DATA: ResumeData = {
   ],
   publications: [
     {
+      title: "Symmetry Informative and Agnostic Feature Disentanglement for 3D Shapes",
+      techStack: [
+        "Shape Analysis",
+        "Symmetry",
+        "Meshes",
+        "Feature Extraction",
+        "Disentanglement",
+        "Machine Learning",
+        "Shape Matching",
+      ],
+      description:
+        "",
+      link: {
+        label: "Link",
+        href: "https://weissberg.io",
+      },
+      authors: [
+        "Tobias Weißberg", "Weikang Wang", "Paul Roetzer", "Nafie El Amrani", "Florian Bernard"
+      ],
+      publisher: "International Conference on 3D Vision (3DV), March 2026",
+    },
+    {
       title: "χ: Symmetry Understanding of 3D Shapes via Chirality Disentanglement",
       techStack: [
         "Shape Analysis",
