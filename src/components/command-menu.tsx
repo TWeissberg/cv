@@ -76,6 +76,14 @@ export const CommandMenu = ({ links }: Props) => {
             >
               <span>Impressum</span>
             </CommandItem>
+            <CommandItem
+              onSelect={() => {
+                setOpen(false);
+                window.open("/Datenschutzerklaerung.html", "_blank");
+              }}
+            >
+              <span>Datenschutzerklärung</span>
+            </CommandItem>
           </CommandGroup>
           <CommandGroup heading="Links">
             {links.map(({ url, title }) => (
