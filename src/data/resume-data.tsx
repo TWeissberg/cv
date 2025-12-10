@@ -22,7 +22,7 @@ export const RESUME_DATA: ResumeData = {
     </>
   ),
   avatarUrl: "https://lovc.cs.uni-bonn.de/wp-content/uploads/2024/09/weissberg.png",
-  personalWebsiteUrl: "https://tow.do",
+  personalWebsiteUrl: "https://weissberg.io",
   contact: {
     email: "weissberg@uni-bonn.de",
     tel: "",
