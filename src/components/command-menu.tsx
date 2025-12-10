@@ -12,6 +12,7 @@ import {
   CommandSeparator,
 } from "@/components/ui/command";
 import { Button } from "./ui/button";
+import { ImpressumDialog } from "./impressum-dialog";
 
 interface Props {
   links: { url: string; title: string }[];
@@ -19,6 +20,7 @@ interface Props {
 
 export const CommandMenu = ({ links }: Props) => {
   const [open, setOpen] = React.useState(false);
+  const [impressumOpen, setImpressumOpen] = React.useState(false);
   const isMac: boolean =
     typeof window !== "undefined"
       ? window.navigator.userAgent.indexOf("Mac") > -1
@@ -66,6 +68,14 @@ export const CommandMenu = ({ links }: Props) => {
             >
               <span>Print</span>
             </CommandItem>
+            <CommandItem
+              onSelect={() => {
+                setImpressumOpen(true);
+                setOpen(false);
+              }}
+            >
+              <span>Impressum</span>
+            </CommandItem>
           </CommandGroup>
           <CommandGroup heading="Links">
             {links.map(({ url, title }) => (
@@ -83,6 +93,7 @@ export const CommandMenu = ({ links }: Props) => {
           <CommandSeparator />
         </CommandList>
       </CommandDialog>
+      <ImpressumDialog open={impressumOpen} onOpenChange={setImpressumOpen} />
     </>
   );
 };
